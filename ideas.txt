@@ -6,3 +6,4 @@ select vowels/consonants to use
 other latin based languages
 dump all possible words (break computer)
 vowel/consonant weight selectors
+display chance the word had to show
