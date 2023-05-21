@@ -1,0 +1,8 @@
+Potential Upcoming Features
+===========================
+select how many words to generate
+funky mode :tm:
+select vowels/consonants to use
+other latin based languages
+dump all possible words (break computer)
+vowel/consonant weight selectors

@@ -1,30 +1,40 @@
 extends Node
 
+# Vowels
+var one_vowels = ['a', 'e', 'i', 'o', 'u']
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-var vowels = ['a', 'e', 'i', 'o', 'u', 
-	'aa', 'ae', 'ai', 'ao', 'au', 
+var two_vowels = ['aa', 'ae', 'ai', 'ao', 'au', 
 	'ea', 'ee', 'ei', 'eo', 'eu', 
 	'ia', 'ie', 'ii', 'io', 'iu', 
 	'oa', 'oe', 'oi', 'oo', 'ou', 
-	'ua', 'ue', 'ui', 'uo', 'uu', 
-	'aae', 'aai', 'aao', 'aau', 'aea', 'aee', 'aei', 'aeo', 'aeu', 'aia', 'aie', 'aii', 'aio', 'aiu', 'aoa', 'aoe', 'aoi', 'aoo', 'aou', 'aua', 'aue', 'aui', 'auo', 'auu', 
-	'eaa', 'eae', 'eai', 'eao', 'eau', 'eea', 'eei', 'eeo', 'eeu', 'eia', 'eie', 'eii', 'eio', 'eiu', 'eoa', 'eoe', 'eoi', 'eoo', 'eou', 'eua', 'eue', 'eui', 'euo', 'euu', 
-	'iaa', 'iae', 'iai', 'iao', 'iau', 'iea', 'iee', 'iei', 'ieo', 'ieu', 'iia', 'iie', 'iio', 'iiu', 'ioa', 'ioe', 'ioi', 'ioo', 'iou', 'iua', 'iue', 'iui', 'iuo', 'iuu', 
-	'oaa', 'oae', 'oai', 'oao', 'oau', 'oea', 'oee', 'oei', 'oeo', 'oeu', 'oia', 'oie', 'oii', 'oio', 'oiu', 'ooa', 'ooe', 'ooi', 'oou', 'oua', 'oue', 'oui', 'ouo', 'ouu', 
-	'uaa', 'uae', 'uai', 'uao', 'uau', 'uea', 'uee', 'uei', 'ueo', 'ueu', 'uia', 'uie', 'uii', 'uio', 'uiu', 'uoa', 'uoe', 'uoi', 'uoo', 'uou', 'uua', 'uue', 'uui', 'uuo', 
-	'iaou', 'aeou', 'uoia']
+	'ua', 'ue', 'ui', 'uo', 'uu']
+	
+var three_vowels = ['aee', 'aei', 'aeo', 'aeu', 'aia', 'aie', 'aii', 'aio', 
+	'aiu', 'aoa', 'aoe', 'aoi', 'aoo', 'aou', 'aua', 'aue', 'aui', 'auo', 'auu',
+	'eae', 'eai', 'eao', 'eau', 'eea', 'eei', 'eeo', 'eeu', 'eia', 'eie', 'eii',
+	'eio', 'eiu', 'eoa', 'eoe', 'eoi', 'eoo', 'eou', 'eua', 'eue', 'eui', 'euo',
+	'euu', 'iaa', 'iae', 'iai', 'iao', 'iau', 'iea', 'iee', 'iei', 'ieo', 'ieu',
+	'iia', 'iie', 'iio', 'iiu', 'ioa',
+	'ioe', 'ioi', 'ioo', 'iou', 'iua', 'iue', 'iui', 'iuo', 'iuu', 'oaa', 'oae',
+	'oai', 'oao', 'oau', 'oea', 'oee', 'oei', 'oeo', 'oeu', 'oia', 'oie', 'oii',
+	'oio', 'oiu', 'ooa', 'ooe', 'ooi', 'oou', 'oua', 'oue', 'oui', 'ouo', 'ouu', 
+	'uaa', 'uae', 'uai', 'uao', 'uau', 'uea', 'uee', 'uei', 'ueo', 'ueu', 'uia',
+	'uie', 'uii', 'uio', 'uiu', 'uoa', 'uoe', 'uoi', 'uoo', 'uou', 'uua', 'uue',
+	'uui', 'uuo']
 
-var c_starts = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 
-		'bl', 'br', 'ch', 'kh', 'qh', 'dr', 'fl', 'fj', 'fr', 'gh', 'gl', 'gr', 'kn', 'kl', 'cl', 'ql', 'kr', 'cr', 'qr', 'kw', 'cw', 'qw', 'pl', 'pr', 'sh', 'sk', 'sc', 'sq', 'sl', 'sm', 'sn', 'sp', 'st', 'sv', 'sw', 'th', 'tr', 'tw', 'vl', 'vr', 'wh', 
-		'thr', 'str', 'spr', 'shr', 'skr', 'scr', 'sqr', 'spl', 'skw', 'scw', 'sqw', 'thw', 'sfr', 'shm', 'shn', 'chr', 'sch',
-		'shkw', 'shcw', 'shqw', 'shpl', 'shtr', 'shtw', 'shkr', 'shcr', 'shqr']
-		
-var c_middles = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 
-				'bb', 'bc', 'bd', 'bf', 'bg', 'bh', 'bj', 'bk', 'bl', 'bm', 'bn', 'bp', 'bq', 'br', 'bs', 'bt', 'bv', 'bw', 'bx', 'by', 'bz', 
+
+# Consonants
+var one_c_starts = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+
+var two_c_starts = ['bl', 'br', 'ch', 'kh', 'qh', 'dr', 'fl', 'fj', 'fr', 'gh', 'gl', 'gr', 'kn', 'kl', 'cl', 'ql', 'kr', 'cr', 'qr', 'kw', 'cw', 'qw', 'pl', 'pr', 'sh', 'sk', 'sc', 'sq', 'sl', 'sm', 'sn', 'sp', 'st', 'sv', 'sw', 'th', 'tr', 'tw', 'vl', 'vr', 'wh']
+
+var three_c_starts = ['thr', 'str', 'spr', 'shr', 'skr', 'scr', 'sqr', 'spl', 'skw', 'scw', 'sqw', 'thw', 'sfr', 'shm', 'shn', 'chr', 'sch']
+
+var four_c_starts = ['shkw', 'shcw', 'shqw', 'shpl', 'shtr', 'shtw', 'shkr', 'shcr', 'shqr']
+
+var one_c_middles = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+
+var two_c_middles = ['bb', 'bc', 'bd', 'bf', 'bg', 'bh', 'bj', 'bk', 'bl', 'bm', 'bn', 'bp', 'bq', 'br', 'bs', 'bt', 'bv', 'bw', 'bx', 'by', 'bz', 
 				'cb', 'cc', 'cd', 'cf', 'cg', 'ch', 'cj', 'ck', 'cl', 'cm', 'cn', 'cp', 'cq', 'cr', 'cs', 'ct', 'cv', 'cw', 'cx', 'cy', 'cz', 
 				'db', 'dc', 'dd', 'df', 'dg', 'dh', 'dj', 'dk', 'dl', 'dm', 'dn', 'dp', 'dq', 'dr', 'ds', 'dt', 'dv', 'dw', 'dx', 'dy', 'dz', 
 				'fb', 'fc', 'fd', 'ff', 'fg', 'fh', 'fj', 'fk', 'fl', 'fm', 'fn', 'fp', 'fq', 'fr', 'fs', 'ft', 'fv', 'fw', 'fx', 'fy', 'fz', 
@@ -44,8 +54,9 @@ var c_middles = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q'
 				'wb', 'wc', 'wd', 'wf', 'wg', 'wh', 'wj', 'wk', 'wl', 'wm', 'wn', 'wp', 'wq', 'wr', 'ws', 'wt', 'wv', 'ww', 'wx', 'wy', 'wz', 
 				'xb', 'xc', 'xd', 'xf', 'xg', 'xh', 'xj', 'xk', 'xl', 'xm', 'xn', 'xp', 'xq', 'xr', 'xs', 'xt', 'xv', 'xw', 'xx', 'xy', 'xz', 
 				'yb', 'yc', 'yd', 'yf', 'yg', 'yh', 'yj', 'yk', 'yl', 'ym', 'yn', 'yp', 'yq', 'yr', 'ys', 'yt', 'yv', 'yw', 'yx', 'yy', 'yz', 
-				'zb', 'zc', 'zd', 'zf', 'zg', 'zh', 'zj', 'zk', 'zl', 'zm', 'zn', 'zp', 'zq', 'zr', 'zs', 'zt', 'zv', 'zw', 'zx', 'zy', 'zz',
-				'bbl', 'bbr', 'bbw', 'bcl', 'bcr', 'bcw', 'bdl', 'bdr', 'bdw', 'bfl', 'bfr', 'bfw', 'bgl', 'bgr', 'bgw', 'bkl', 'bkr', 'bkw', 'bpl', 'bpr', 'bpw', 'bql', 'bqr', 'bqw', 'btl', 'btr', 'btw', 'bvl', 'bvr', 'bvw', 
+				'zb', 'zc', 'zd', 'zf', 'zg', 'zh', 'zj', 'zk', 'zl', 'zm', 'zn', 'zp', 'zq', 'zr', 'zs', 'zt', 'zv', 'zw', 'zx', 'zy', 'zz']
+
+var three_c_middles = ['bbl', 'bbr', 'bbw', 'bcl', 'bcr', 'bcw', 'bdl', 'bdr', 'bdw', 'bfl', 'bfr', 'bfw', 'bgl', 'bgr', 'bgw', 'bkl', 'bkr', 'bkw', 'bpl', 'bpr', 'bpw', 'bql', 'bqr', 'bqw', 'btl', 'btr', 'btw', 'bvl', 'bvr', 'bvw', 
 				'cbl', 'cbr', 'cbw', 'ccl', 'ccr', 'ccw', 'cdl', 'cdr', 'cdw', 'cfl', 'cfr', 'cfw', 'cgl', 'cgr', 'cgw', 'ckl', 'ckr', 'ckw', 'cpl', 'cpr', 'cpw', 'cql', 'cqr', 'cqw', 'ctl', 'ctr', 'ctw', 'cvl', 'cvr', 'cvw', 
 				'dbl', 'dbr', 'dbw', 'dcl', 'dcr', 'dcw', 'ddl', 'ddr', 'ddw', 'dfl', 'dfr', 'dfw', 'dgl', 'dgr', 'dgw', 'dkl', 'dkr', 'dkw', 'dpl', 'dpr', 'dpw', 'dql', 'dqr', 'dqw', 'dtl', 'dtr', 'dtw', 'dvl', 'dvr', 'dvw', 
 				'fbl', 'fbr', 'fbw', 'fcl', 'fcr', 'fcw', 'fdl', 'fdr', 'fdw', 'ffl', 'ffr', 'ffw', 'fgl', 'fgr', 'fgw', 'fkl', 'fkr', 'fkw', 'fpl', 'fpr', 'fpw', 'fql', 'fqr', 'fqw', 'ftl', 'ftr', 'ftw', 'fvl', 'fvr', 'fvw', 
@@ -66,57 +77,109 @@ var c_middles = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q'
 				'xbl', 'xbr', 'xbw', 'xcl', 'xcr', 'xcw', 'xdl', 'xdr', 'xdw', 'xfl', 'xfr', 'xfw', 'xgl', 'xgr', 'xgw', 'xkl', 'xkr', 'xkw', 'xpl', 'xpr', 'xpw', 'xql', 'xqr', 'xqw', 'xtl', 'xtr', 'xtw', 'xvl', 'xvr', 'xvw', 
 				'ybl', 'ybr', 'ybw', 'ycl', 'ycr', 'ycw', 'ydl', 'ydr', 'ydw', 'yfl', 'yfr', 'yfw', 'ygl', 'ygr', 'ygw', 'ykl', 'ykr', 'ykw', 'ypl', 'ypr', 'ypw', 'yql', 'yqr', 'yqw', 'ytl', 'ytr', 'ytw', 'yvl', 'yvr', 'yvw', 
 				'zbl', 'zbr', 'zbw', 'zcl', 'zcr', 'zcw', 'zdl', 'zdr', 'zdw', 'zfl', 'zfr', 'zfw', 'zgl', 'zgr', 'zgw', 'zkl', 'zkr', 'zkw', 'zpl', 'zpr', 'zpw', 'zql', 'zqr', 'zqw', 'ztl', 'ztr', 'ztw', 'zvl', 'zvr', 'zvw',
-				'thr', 'str', 'spr', 'shr', 'skr', 'scr', 'sqr', 'spl', 'skw', 'scw', 'sqw', 'thw', 'sfr', 'shm', 'shn', 'chr', 'dgm', 'ght', 'rgh', 'ngh',
-				'shkw', 'shcw', 'shqw', 'shpl', 'shtr', 'shtw', 'shkr', 'shcr', 'shqr']
+				'thr', 'str', 'spr', 'shr', 'skr', 'scr', 'sqr', 'spl', 'skw', 'scw', 'sqw', 'thw', 'sfr', 'shm', 'shn', 'chr', 'dgm', 'ght', 'rgh', 'ngh']
 
-var ends = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-			'bb', 'cc', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'mm', 'nn' ,'pp', 'qq', 'rr', 'ss', 'tt', 'vv', 'ww', 'xx', 'yy', 'zz',
-			'bt', 'mb', 'ct', 'ch', 'ck', 'dh', 'ft', 'gn', 'gh', 'ld', 'lf', 'lk', 'lp', 'lt', 'nd', 'ng', 'nh', 'nk', 'nt', 'kh', 'mn', 'mp', 'ps', 'pt', 'rd', 'rt', 'sk', 'st', 'ts', 'ds', 'sh', 'xt', 'sm', 'sp', 'wl', 'wk', 'wc', 'wq',
-			'nth', 'rgh', 'ght', 'cht', 'ngh', 'tch', 'rst', 'rth', 'wch', 'ngst', 'ngth']
+var four_c_middles = ['shkw', 'shcw', 'shqw', 'shpl', 'shtr', 'shtw', 'shkr', 'shcr', 'shqr']
+
+var one_c_ends = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+
+var two_c_ends = ['bb', 'cc', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'mm', 'nn' ,'pp', 'qq', 'rr', 'ss', 'tt', 'vv', 'ww', 'xx', 'yy', 'zz',
+			'bt', 'mb', 'ct', 'ch', 'ck', 'dh', 'ft', 'gn', 'gh', 'ld', 'lf', 'lk', 'lp', 'lt', 'nd', 'ng', 'nh', 'nk', 'nt', 'kh', 'mn', 'mp', 'ps', 'pt', 'rd', 'rt', 'sk', 'st', 'ts', 'ds', 'sh', 'xt', 'sm', 'sp', 'wl', 'wk', 'wc', 'wq']
+
+var three_c_ends = ['nth', 'rgh', 'ght', 'cht', 'ngh', 'tch', 'rst', 'rth', 'wch']
+
+var four_c_ends = ['ngst', 'ngth']
+
 
 
 func get_vowel():
 
-	return vowels[random.randint(0, len(vowels) - 1)]
+	var chance = randf()
+	
+	if chance > 0.839999:
+		if chance > 0.989999:
+			
+			return three_vowels[randi() % three_vowels.size()]
+		
+		return two_vowels[randi() % two_vowels.size()]
+
+	return one_vowels[randi() % one_vowels.size()]
 
 
 func get_c_start():
 
-	return consonants['starts'][random.randint(0, len(consonants['starts']) - 1)]
+	var chance = randf()
+	
+	if chance > 0.631147:
+		if chance > 0.909835:
+			if chance > 0.989999:
+				
+				return four_c_starts[randi() % four_c_starts.size()]
+			
+			return three_c_starts[randi() % three_c_starts.size()]
+		
+		return two_c_starts[randi() % two_c_starts.size()]
+
+	return one_c_starts[randi() % one_c_starts.size()]
+
 
 
 func get_c_mid():
 
-	return consonants['middles'][random.randint(0, len(consonants['middles']) - 1)]
+	var chance = randf()
+	
+	if chance > 0.631147:
+		if chance > 0.909835:
+			if chance > 0.989999:
+				
+				return four_c_middles[randi() % four_c_middles.size()]
+			
+			return three_c_middles[randi() % three_c_middles.size()]
+		
+		return two_c_middles[randi() % two_c_middles.size()]
+
+	return one_c_middles[randi() % one_c_middles.size()]
 
 
 func get_c_end():
 
-	return consonants['ends'][random.randint(0, len(consonants['ends']) - 1)]
+	var chance = randf()
+	
+	if chance > 0.631147:
+		if chance > 0.909835:
+			if chance > 0.989999:
+				
+				return four_c_ends[randi() % four_c_ends.size()]
+			
+			return three_c_ends[randi() % three_c_ends.size()]
+		
+		return two_c_ends[randi() % two_c_ends.size()]
+
+	return one_c_ends[randi() % one_c_ends.size()]
 
 
 func jibberate():
 	var jib = ""
 
-	if random.randint(0, 1):
+	if randi_range(0, 1):
 		#print("first vowel\n")
 		jib += get_vowel()
-		print(jib)
+		#print(jib)
 	jib += get_c_start()
 	#print("c start\n")
-	print(jib)
+	#print(jib)
 	#print("vowel root\n")
 	jib += get_vowel()
-	print(jib)
+	#print(jib)
 	
-	if random.randint(0, 1):
+	if randi_range(0, 1):
 		#print("not done,  add middle and vowel\n")
 		jib += get_c_mid()
 		jib += get_vowel()
-		print(jib)
+		#print(jib)
 	
-	if random.randint(0, 1):
-		if random.randint(0, 1):
+	if randi_range(0, 1):
+		if randi_range(0, 1):
 			jib += get_c_mid()
 			jib += get_vowel()
 		else:

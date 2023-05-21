@@ -1,11 +1,13 @@
 extends Control
 
+var _button_texts = ['More', 'Moar', 'more', 'moor', 'Morr', 'AGANE', 'Again', 'Send',
+	'MORE', 'SEND', 'MOAR', 'AGAIN', 'FULL SEND', 'SEND IT']
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_button_pressed():
+	$jibberish.text = Lib.jibberate()
+	$Button.text = _button_texts[randi() % _button_texts.size()]
